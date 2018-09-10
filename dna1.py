@@ -2,17 +2,33 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 
-url = "https://198.18.129.100/api/system/v1/auth/token"
+url = "https://10.1.5.19/api/system/v1/auth/token"
 
 headers = {'content-type': 'application/json'}
 
-resp = requests.post(url, auth=HTTPBasicAuth(username='admin', password='C1sco12345'), headers=headers,verify=False)
+resp = requests.post(url, auth=HTTPBasicAuth(username='admin', password='C1sc0123'), headers=headers,verify=False)
 
 print ("Request Status: ",resp.status_code)
 
 
-#token = resp.json()['Token']
-
-#hello
+token = resp.json()['Token']
 
 #print(token)
+
+url = "https://10.1.5.19/api/v1/network-device"
+
+headers = {'X-Auth-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YjdhMmY5MTc1ODcwODAwOGNkZjEyZTEiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjViN2EyZjhmNzU4NzA4MDA4Y2RmMTJlMCJdLCJ0ZW5hbnRJZCI6IjViN2EyZjhlNzU4NzA4MDA4Y2RmMTJkZSIsImV4cCI6MTUzNjU2Mjk5NiwidXNlcm5hbWUiOiJhZG1pbiJ9.2mE4mkQjlXKimahgX5jkhfpgHJun_TCcTfHxPHJhFfc'}
+
+resp = requests.get(url, headers=headers,verify=False)
+
+print ("Request Status: ",resp.status_code)
+
+networkdevice = resp.json()
+
+i = 0
+
+
+for _ in networkdevice['response']:
+    networkdevice_tmp = networkdevice['response'][i]
+    print(networkdevice_tmp['platformId'],": ",networkdevice_tmp['hostname']," ",networkdevice_tmp['id'])
+    i += 1

@@ -14,13 +14,10 @@ roomid = []
 
 for _ in output['items']:
     output2 = output['items'][i]
-    #print(output2['title'])
     if ("ccp" in str(output2).lower()):
         print(output2['title'],": ",output2['id'])
         roomid.append(output2['id'])
     i += 1
-
-#print(roomid)
 
 j = 0
 
