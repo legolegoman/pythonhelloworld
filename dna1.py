@@ -17,7 +17,7 @@ token = resp.json()['Token']
 
 url = "https://10.1.5.19/api/v1/network-device"
 
-headers = {'X-Auth-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YjdhMmY5MTc1ODcwODAwOGNkZjEyZTEiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjViN2EyZjhmNzU4NzA4MDA4Y2RmMTJlMCJdLCJ0ZW5hbnRJZCI6IjViN2EyZjhlNzU4NzA4MDA4Y2RmMTJkZSIsImV4cCI6MTUzNjU2Mjk5NiwidXNlcm5hbWUiOiJhZG1pbiJ9.2mE4mkQjlXKimahgX5jkhfpgHJun_TCcTfHxPHJhFfc'}
+headers = {'X-Auth-Token': token}
 
 resp = requests.get(url, headers=headers,verify=False)
 
